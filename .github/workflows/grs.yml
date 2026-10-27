@@ -20,9 +20,9 @@ jobs:
           card: stats
           options: username=${{ github.repository_owner }}&show_icons=true&count_private=true&include_all_commits=true
           path: profile/stats.svg
-          # PAT_1 (repo + read:user) counts private repos; falls back to the
-          # default token (public data only) until the secret is added.
-          token: ${{ secrets.PAT_1 || secrets.GITHUB_TOKEN }}
+          # PATH1 (classic PAT, repo + read:user) counts private repos; falls
+          # back to the default token (public data only) if the secret is missing.
+          token: ${{ secrets.PATH1 || secrets.GITHUB_TOKEN }}
 
       - name: Commit cards
         run: |
